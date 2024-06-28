@@ -43,7 +43,7 @@ markword          8个字节
 实例变量           0
 补齐                  0		
 16字节（压缩 非压缩）
-Object o
+Object obj
 8个字节 
 JVM参数指定压缩或非压缩
 

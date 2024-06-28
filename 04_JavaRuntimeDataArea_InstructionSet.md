@@ -18,11 +18,11 @@ PC 程序计数器
 >
 > while( not end ) {
 >
-> ​	取PC中的位置，找到对应位置的指令；
+> 	取PC中的位置，找到对应位置的指令；
 >
-> ​	执行该指令；
+> 	执行该指令；
 >
-> ​	PC ++;
+> 	PC ++;
 >
 > }
 
@@ -34,11 +34,14 @@ JVM Stack
       对于long的处理（store and load），多数虚拟机的实现都是原子的
       jls 17.7，没必要加volatile
    3. Dynamic Linking
-       https://blog.csdn.net/qq_41813060/article/details/88379473 
+       https://blog.csdn.net/qq_41813060/article/details/88379473
       jvms 2.6.3
    4. return address
-      a() -> b()，方法a调用了方法b, b方法的返回值放在什么地方
-
+      一个方法结束，有正常执行完成和出现未处理的异常非正常退出两种方式，方法在正常调用完成之后究竟需要使用哪一个返回指令还需要根据方法
+      返回值的实际数据类型而定。在字节码指令中，返回指令包含ireturn(返回值是boolean,byte,char,short,int类型)，lreturn,freturn,
+      dreturn以及areturn,另外还有一个return指令供声明为void方法，实例化初始化方法、类和接口的初始化方法使用。而异常处理逻辑存储在一个
+      叫着异常处理表的表中，方便在发生异常的时候找到处理异常的代码。无论哪种方式退出，在方法退出后都返回到该方法被调用的位置，方法正常退出时，
+      调用者PC寄存器的值做为返回地址，好调用该方法返回后的下一条指令，而异常退出的，返回地址是要通过异常处理表来确定，栈帧中一般不会保存这部分信息。
 Heap
 
 Method Area
@@ -87,7 +90,7 @@ invoke
 1. InvokeStatic
 2. InvokeVirtual
 3. InvokeInterface
-4. InovkeSpecial
+4. InvokeSpecial
    可以直接定位，不需要多态的方法
    private 方法 ， 构造方法
 5. InvokeDynamic

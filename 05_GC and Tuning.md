@@ -231,7 +231,7 @@ total = eden + 1个survivor
   4. 选定CPU（越高越好）
   5. 设定年代大小、升级年龄
   6. 设定日志参数
-     1. -Xloggc:/opt/xxx/logs/xxx-xxx-gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=20M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause
+     1. -Xloggc:/opt/xxx/logs/xxx-xxx-gc-%innerClass.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=20M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause
      2. 或者每天产生一个日志文件
   7. 观察日志情况
   
